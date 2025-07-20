@@ -1,4 +1,4 @@
-import StationModel from '@/models/station.model';
+import stationModel from '@/models/station.model';
 require('dotenv').config();
 
 export default async function updateStationsDataFromApiService() {
@@ -29,7 +29,7 @@ export default async function updateStationsDataFromApiService() {
     console.log('Estaciones actualizadas correctamente');    
 
   } catch (error) {
-    console.error('Error en updateStationsDataService:', error);
+    console.error('Error en updateStationsDataFromApiService:', error);
     
   }
 }
@@ -44,7 +44,7 @@ async function updateStationsDataService(stations: {station_id: string}[]) {
         }
      }));
 
-     const result = await StationModel.bulkWrite(bulkOps);
+     const result = await stationModel.bulkWrite(bulkOps);
   } catch (error) {
     console.error('Error al actualizar las estaciones:', error);
   }
