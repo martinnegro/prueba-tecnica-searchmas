@@ -53,6 +53,18 @@ npm run build # Compila TypeScript a JavaScript en la carpeta dist/.
 npm start # Corre el servidor compilado (dist/index.js). Ejecutar build antes.
 ```
 
+## 🐳 Levantar con Docker
+También podés levantar todo el entorno usando Docker.
+
+### Construir la imagen
+```bash
+docker build -t bici-baires-api .
+```
+### Ejecutar el contenedor
+```bash
+docker run -p 3000:3000 --env-file .env bici-baires-api
+```
+
 ## 🧪 Endpoints disponibles
 Todos los endpoints están bajo la ruta base /api:
 
