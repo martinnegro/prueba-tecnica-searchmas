@@ -1,5 +1,6 @@
 import cron from 'node-cron';
 import stationStatusModel from '@/models/stationStatus.model';
+import { ObjectId } from 'mongodb';
 
 export function startStationStatusCron(apiUrl: string) {
   cron.schedule('* * * * *', async () => {
@@ -28,10 +29,9 @@ async function createStationStatusSnapshotsService(stations: { station_id: strin
   try {
     const docs = stations.map(station => ({
       ...station,
-      station_ref: station.station_id,
       created_at: new Date(),
     }));
-
+    console.log(docs)
     const result = await stationStatusModel.insertMany(docs, { ordered: false });
     console.log(`Se insertaron ${result.length} documentos de status`);
   } catch (error) {

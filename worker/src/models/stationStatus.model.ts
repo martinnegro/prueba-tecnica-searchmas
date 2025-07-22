@@ -2,7 +2,6 @@ import mongoose from "mongoose"
 import { Schema } from "mongoose"
 
 const stationStatusSchema = new Schema({
-  station_ref: { type: Schema.ObjectId, required: true },
   station_id: { type: String, ref: 'Station',required: true },
   num_bikes_available: { type: Number, required: true },
   num_bikes_available_types: {
