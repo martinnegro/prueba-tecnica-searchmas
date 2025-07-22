@@ -11,8 +11,9 @@ export async function exportStatusesCsvByDateRangeController(req: Request, res: 
     }
     try {
         const csvData = await exportStatusesCsvByDateRange(startDate, endDate);
+        const fileName = `${startDate}_${endDate}_station_statuses.csv`;
         res.setHeader('Content-Type', 'text/csv');
-        res.setHeader('Content-Disposition', 'attachment; filename=station_statuses.csv');
+        res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
         res.status(200).send(csvData);
     } catch (error) {
         console.error('Error generating CSV:', error);
