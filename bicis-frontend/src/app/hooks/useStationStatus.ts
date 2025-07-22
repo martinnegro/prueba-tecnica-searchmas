@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
  * Returns the latest status array of all stations.
  */
 export function useStationStatus() {
-  const [stations, setStations] = useState<any[]>([]);
+  const [stations, setStations] = useState<StationStatus[]>([]);
 
   useEffect(() => {
     const fetchStations = async () => {
