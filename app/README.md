@@ -30,12 +30,12 @@ Creá un archivo `.env` en la raíz del proyecto con este contenido:
 ```env
 API_URL=https://apitransporte.buenosaires.gob.ar
 STATIONS_INFO_PATH=/ecobici/gbfs/stationInformation
+STATIONS_INFO_PATH=/ecobici/gbfs/stationInformation
 CLIENT_ID=tu_client_id
 CLIENT_SECRET=tu_client_secret
 
 MONGO_URI=mongodb://localhost:27017/stations
 PORT=3000
-Podés usar tu propia URI de MongoDB (por ejemplo, una conexión a MongoDB Atlas).
 ```
 
 ## 🛠️ Instalación
@@ -72,12 +72,19 @@ POST /api/external-data: Consume los datos de la API de transporte y los guarda 
 
 GET /api/data: Devuelve todas las estaciones almacenadas.
 
+GET /api/data/stations-status: Devuelve el estado de las estaciones (bicis y docks disponibles)
+
 GET /api/export-csv: Devuelve un archivo CSV con los datos de las estaciones.
+
+get /api/export-csv/statuses: Devuelve un archivo CSV con los status determinados entre dos fechas. Recibe dos params: startdate y un enddate ambos en formato epoch.
+
+
 
 ## 📝 Notas adicionales
 - Se utilizan imports absolutos con @ gracias a module-alias.
 - El objeto rental_uri es convertido a string para poder exportarlo correctamente como CSV.
 - En desarrollo, se ejecuta con ts-node-dev; en producción, se compila con npm run build.
+- Para facilitar el envío de dates en parámetros de query se utiliza el formato epoch.
 
 ## 👤 Autor
 Martin Negro Ruffino

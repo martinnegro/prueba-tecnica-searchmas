@@ -3,8 +3,6 @@ import { Request, Response } from 'express';
 
 export async function exportStatusesCsvByDateRangeController(req: Request, res: Response) {
   const { startdate: startDate, enddate: endDate } = req.query as { startdate: string, enddate: string };
-  console.log(req.params)
-  console.log(startDate, endDate);
     if (!startDate || !endDate) {
         return res.status(400).send('Start date and end date are required');
     }
