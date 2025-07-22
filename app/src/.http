@@ -1,7 +1,7 @@
 GET http://localhost:3000/api/data
 
 ###
-POST http://localhost:3030/api/external-data
+POST http://localhost:3000/api/external-data
 
 ###
 GET http://localhost:3000/api/export-csv
