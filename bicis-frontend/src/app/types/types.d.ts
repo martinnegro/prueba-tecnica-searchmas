@@ -18,7 +18,12 @@ interface Station {
   nearby_distance: number;
   _ride_code_support: boolean;
   rental_uris: Map<string, string>;
-}
+  status: StationStatus | {
+    availability_bikes: 'not_known';
+    availability_docks: 'not_known';
+    num_bikes_available?: number;
+    num_docks_available?: number;
+}}
 
 interface StationStatus {
   station_id: string; // Reference to Station
@@ -38,6 +43,6 @@ interface StationStatus {
   is_returning?: boolean;
   traffic?: string | null;
   created_at?: Date; // Optional, defaults to now
-  availability_bikes?: 'green' | 'yellow' | 'red' | 'not_known';
-  availability_docks?: 'green' | 'yellow' | 'red' | 'not_known';
+  availability_bikes: 'green' | 'yellow' | 'red' | 'not_known';
+  availability_docks: 'green' | 'yellow' | 'red' | 'not_known';
 }

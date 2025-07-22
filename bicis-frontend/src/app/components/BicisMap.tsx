@@ -19,7 +19,7 @@ export default function BicisMap({ selectedStatus }: PropsWithChildren<{  select
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {stationsWithStatus.map((station: any) => (
+            {stationsWithStatus.map((station: Station) => (
                 <Marker key={station._id} position={[station.lat, station.lon]}
                   icon={StatusStationMarker({
                     status: selectedStatus === 'bikes' ? station.status.availability_bikes : station.status.availability_docks
@@ -28,8 +28,8 @@ export default function BicisMap({ selectedStatus }: PropsWithChildren<{  select
                     <Popup>
                         <div>
                             <h3>{station.name}</h3>
-                            <p>Bicicletas disponibles: {station.status.num_bikes_available}</p>
-                            <p>Espacios disponibles: {station.status.num_docks_available}</p>
+                            <p>Bicicletas disponibles: {station.status.num_bikes_available ?? 0}</p>
+                            <p>Espacios disponibles: {station.status.num_docks_available ?? 0}</p>
                             <p>Ubicación: {station.address}</p>
                         </div>
                     </Popup>
