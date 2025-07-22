@@ -16,9 +16,8 @@ export default function AdminPage() {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/external-data`, {
         method: 'POST'
       });
-      const data = await res.json();
+      if (!res.ok) throw new Error('Error al actualizar estaciones');
       alert('Estaciones actualizadas correctamente.');
-      console.log(data);
     } catch (error) {
       console.error("Error al actualizar estaciones:", error);
       alert("Hubo un error al actualizar las estaciones.");
