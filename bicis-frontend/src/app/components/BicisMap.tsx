@@ -3,19 +3,11 @@ import { MapContainer, Popup, TileLayer, useMap, Marker } from 'react-leaflet';
 import L, { LatLngBounds, latLngBounds } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { PropsWithChildren, useEffect, useState } from 'react';
+import { useStationsWithStatus } from '../hooks/useStationWithStatus';
 
 export default function BicisMap() {
-  const [bounds, _setBounds] = useState(latLngBounds([-34.5, -58.689658],[-34.712663, -58.359213]));
-  const [stations, setStations] = useState([]); 
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/data`)
-      .then(response => response.json())
-      .then(data => setStations(data))
-      .catch(error => console.error('Error fetching stations:', error));
-  }, []);
-
-
+  const [bounds, _setBounds] = useState(latLngBounds([-34.53539058133557, -58.53793881079533],[-34.70058185121826, -58.3472558236615]));
+  const stationsWithStatus = useStationsWithStatus();
 
   return (
     <MapContainer
@@ -27,14 +19,15 @@ export default function BicisMap() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            {stations.map((station: any) => (
+            {stationsWithStatus.map((station: any) => (
                 <Marker key={station._id} position={[station.lat, station.lon]}
-                  icon={StatusStationMarker({status: 'active'})}
+                  icon={StatusStationMarker({status: station.status.status_string})}
                 >
                     <Popup>
                         <div>
                             <h3>{station.name}</h3>
-                            <p>{station.description}</p>
+                            <p>Bicicletas disponibles: {station.status.num_bikes_available}</p>
+                            <p>Ubicación: {station.address}</p>
                         </div>
                     </Popup>
                 </Marker>
@@ -55,10 +48,7 @@ const MapFitter: React.FC<PropsWithChildren<{bounds: LatLngBounds}>> = ({bounds}
 
 const StatusStationMarker = ({status}: {status: string}) => {
     return L.icon({
-        iconUrl: 'bike-svgrepo-com.svg',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+        iconUrl: `circles-status/${status}-circle.svg`,
+        iconSize: [25, 25]
     });
 }
