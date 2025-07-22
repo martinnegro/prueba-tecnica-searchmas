@@ -1,4 +1,4 @@
-import getStationsService from "./getStations.service";
+import getStationsService from "./getStationsFromDb.service";
 import Papa from "papaparse";
 
 export default async function exportCsvService() {

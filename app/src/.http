@@ -1,13 +1,10 @@
-GET http://localhost:3030/api/data
+GET http://localhost:3000/api/data
 
 ###
 POST http://localhost:3030/api/external-data
 
 ###
-GET http://localhost:3030/api/export-csv
+GET http://localhost:3000/api/export-csv
 
 ###
-GET https://apitransporte.buenosaires.gob.ar/ecobici/gbfs/stationInformation?client_id=18066611b6284b82bada6566c0d4f48b&client_secret=85FD4691d8eE482A979B917C8024D348
-
-###
-GET https://apitransporte.buenosaires.gob.ar/ecobici/gbfs/stationStatus?client_id=18066611b6284b82bada6566c0d4f48b&client_secret=85FD4691d8eE482A979B917C8024D3483
+GET http://localhost:3000/api/data/stations-status

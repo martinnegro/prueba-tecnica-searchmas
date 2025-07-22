@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { Schema, Model } from "mongoose"
+import { Schema } from "mongoose"
 
 const stationStatusSchema = new Schema({
   station_id: { type: Schema.ObjectId, ref: 'Station',required: true },

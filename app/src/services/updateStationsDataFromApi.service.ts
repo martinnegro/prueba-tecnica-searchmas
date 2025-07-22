@@ -3,7 +3,7 @@ require('dotenv').config();
 
 export default async function updateStationsDataFromApiService() {
   try {
-    const response = await fetch(process.env.API_URL! + '?' + new URLSearchParams({
+    const response = await fetch(process.env.API_URL! + process.env.STATIONS_INFO_PATH! + '?' + new URLSearchParams({
       client_id: process.env.CLIENT_ID!,
       client_secret: process.env.CLIENT_SECRET!,
     }),
@@ -17,7 +17,7 @@ export default async function updateStationsDataFromApiService() {
     if (!response.ok) {
       throw new Error('Error fetching external data');
     }
-    console.log(response)
+    
     const data = await response.json();
 
     const stations = data.data.stations;    
