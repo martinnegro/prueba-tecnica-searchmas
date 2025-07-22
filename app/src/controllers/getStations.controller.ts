@@ -1,4 +1,4 @@
-import getStationsService from '@/services/getStationsFromDb.service';
+import { getStationsService } from '@/services/getStationsFromDb.service';
 import { Request, Response } from 'express';
 
 export async function getStationsController(_req: Request, res: Response) {
