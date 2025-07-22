@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { Schema, Model } from "mongoose"
+import { Schema } from "mongoose"
 
 const stationSchema = new Schema({
   _id: { type: String, required: true },

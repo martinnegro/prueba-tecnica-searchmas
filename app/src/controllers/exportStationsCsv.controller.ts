@@ -1,4 +1,4 @@
-import exportCsvService from '@/services/exportStationsCsv.service';
+import { exportCsvService } from '@/services/exportStationsCsv.service';
 import { Request, Response } from 'express';
 export async function exporStationsCsvController(_req: Request, res: Response) {
     // Implement CSV export logic here

@@ -1,7 +1,7 @@
 import stationModel from '@/models/station.model';
 require('dotenv').config();
 
-export default async function updateStationsDataFromApiService() {
+export async function updateStationsDataFromApiService() {
   try {
     const response = await fetch(process.env.API_URL! + process.env.STATIONS_INFO_PATH! + '?' + new URLSearchParams({
       client_id: process.env.CLIENT_ID!,

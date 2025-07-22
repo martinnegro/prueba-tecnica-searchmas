@@ -1,5 +1,6 @@
-import stationStatusModel from "@/models/stationStatus.model";
 import Papa from "papaparse";
+import stationStatusModel from "@/models/stationStatus.model";
+import createTimestampFromStringEpoch from "@/utils/createTimestampFromStringEpoch";
 
 export async function exportStatusesCsvByDateRange(startDate: string, endDate: string) {
   try {
@@ -27,10 +28,4 @@ export async function exportStatusesCsvByDateRange(startDate: string, endDate: s
     console.error('Error exporting statuses by date range:', error);
     throw error;
   }
-}
-
-function createTimestampFromStringEpoch(dateString: string): Date {
-  const epochInSeconds = parseInt(dateString, 10);
-  const date = new Date(epochInSeconds * 1000);
-  return date
 }

@@ -1,6 +1,6 @@
 import stationModel from "@/models/station.model";
 
-export default async function getStationsService() {
+export async function getStationsService() {
   try {
     // Logic to retrieve stations data from the database
     const stationsDocs = await stationModel.find({}); // Assuming stationModel is imported from the model

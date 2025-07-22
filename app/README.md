@@ -76,7 +76,7 @@ GET /api/data/stations-status: Devuelve el estado de las estaciones (bicis y doc
 
 GET /api/export-csv: Devuelve un archivo CSV con los datos de las estaciones.
 
-get /api/export-csv/statuses: Devuelve un archivo CSV con los status determinados entre dos fechas. Recibe dos params: startdate y un enddate ambos en formato epoch.
+GET /api/export-csv/statuses: Devuelve un archivo CSV con los status determinados entre dos fechas. Recibe dos params: startdate y un enddate ambos en formato epoch.
 
 
 

@@ -1,7 +1,7 @@
 import getStationsService from '@/services/getStationsFromDb.service';
 import { Request, Response } from 'express';
 
-export default async function getStationsController(_req: Request, res: Response) {
+export async function getStationsController(_req: Request, res: Response) {
   try {
     const stations = await getStationsService();
     res.status(200).json(stations);

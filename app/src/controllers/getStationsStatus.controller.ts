@@ -1,8 +1,7 @@
-import getStationsStatusService from "@/services/getStationsStatusFromApi.service";
+import { getStationsStatusService } from "@/services/getStationsStatusFromApi.service";
 import { Request, Response } from "express";
-import { get } from "http";
 
-export default async function getStationsStatusController(_req: Request, res: Response) {
+export async function getStationsStatusController(_req: Request, res: Response) {
     try {
         const stationsStatus = await getStationsStatusService();
         if (!stationsStatus || stationsStatus.length === 0) {

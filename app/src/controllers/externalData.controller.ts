@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import updateStationsDataFromApiService from '@/services/updateStationsDataFromApi.service';
+import { updateStationsDataFromApiService } from '@/services/updateStationsDataFromApi.service';
 
 
-export default async function externalDataController(_req: Request, res: Response) {
+export async function externalDataController(_req: Request, res: Response) {
     try {
         await updateStationsDataFromApiService();
         res.status(200).send('Datos de estaciones actualizados correctamente');

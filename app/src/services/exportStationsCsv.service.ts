@@ -1,7 +1,7 @@
-import getStationsService from "./getStationsFromDb.service";
+import { getStationsService } from "./getStationsFromDb.service";
 import Papa from "papaparse";
 
-export default async function exportCsvService() {
+export async function exportCsvService() {
     try {
         const stations = await getStationsService();
 
