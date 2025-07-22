@@ -7,4 +7,7 @@ POST http://localhost:3000/api/external-data
 GET http://localhost:3000/api/export-csv
 
 ###
+GET http://localhost:3000/api/export-csv/statuses?startdate=1753158903&enddate=1753159233
+
+###
 GET http://localhost:3000/api/data/stations-status

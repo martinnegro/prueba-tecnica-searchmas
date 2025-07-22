@@ -1,3 +1,4 @@
+import { create } from "domain"
 import mongoose from "mongoose"
 import { Schema } from "mongoose"
 
@@ -17,7 +18,8 @@ const stationStatusSchema = new Schema({
   is_installed: { type: Boolean, default: false },
   is_renting: { type: Boolean, default: false },
   is_returning: { type: Boolean, default: false },
-  traffic: { type: String, default: null }
+  traffic: { type: String, default: null },
+  created_at: { type: Date, default: Date.now },
 })
 
 export default mongoose.model("StationStatus", stationStatusSchema)

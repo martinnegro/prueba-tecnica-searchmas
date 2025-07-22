@@ -21,7 +21,6 @@ export default async function updateStationsDataFromApiService() {
     const data = await response.json();
 
     const stations = data.data.stations;    
-    console.log('Estaciones obtenidas de la API externa:', stations);
     if (!stations || !Array.isArray(stations)) {
       throw new Error('Invalid data format received from external API');
     }
@@ -43,7 +42,6 @@ async function updateStationsDataService(stations: {station_id: string}[]) {
         upsert: true                                // si no existe, lo crea
         }
      }));
-
      const result = await stationModel.bulkWrite(bulkOps);
   } catch (error) {
     console.error('Error al actualizar las estaciones:', error);
