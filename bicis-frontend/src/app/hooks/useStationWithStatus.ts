@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { useStationStatus } from "./useStationStatus"; // Hook que actualiza status cada minuto
 
 export function useStationsWithStatus() {
-  const [stations, setStations] = useState<any[]>([]);
+  const [stations, setStations] = useState<Station[]>([]);
   const stationsStatus = useStationStatus(); // Estado de cada estación (dinámico)
 
   // Fetch de estaciones base (una sola vez)
