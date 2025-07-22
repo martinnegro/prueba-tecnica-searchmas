@@ -28,20 +28,27 @@ export function useStationsWithStatus() {
         // si es menor al 30% de capacity, pero mayor a 0, es "yellow"
         // si es 0, es "red"
         if (status) {
-          const { num_bikes_available } = status;
-          const { capacity } = station;
-          if (num_bikes_available >= capacity * 0.2) {
-            status.status_string = "green";
+          const { num_bikes_available, num_docks_available } = status;
+          if (num_bikes_available >= 3) {
+            status.availability_bikes = "green";
           } else if (num_bikes_available > 0) {
-            status.status_string = "yellow";
+            status.availability_bikes = "yellow";
           } else {
-            status.status_string = "red";
+            status.availability_bikes = "red";
+          }
+
+          if (num_docks_available >= 3) {
+            status.availability_docks = "green";
+          } else if (num_docks_available > 0) {
+            status.availability_docks = "yellow";
+          } else {
+            status.availability_docks = "red";
           }
         }
       return {
         ...station,
-        status: status || { status_string: "not_known" },
-        
+        status: status || { availability_bikes: "not_known", availability_docks: "not_known" },
+
       };
     });
   }, [stations, stationsStatus]);

@@ -157,3 +157,21 @@ a.secondary {
     filter: invert();
   }
 }
+
+.switch-container {
+  position:absolute;
+  
+
+  padding: 5px;
+  border-radius: 0 0 10px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  background-color: white;
+  color: black;
+
+  gap: 8px;
+  z-index: 1000;
+}
